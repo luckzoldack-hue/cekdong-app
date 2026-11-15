@@ -1,0 +1,240 @@
+html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CekDong.com - Validasi Semua Bank & E-Wallet</title>
+<style>
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+
+        .header { background-color: #0d6efd; color: white; width: 100%; text-align: center; padding: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 30px; }
+
+        .header h1 { margin: 0; font-size: 26px; letter-spacing: 0.5px; }
+
+        .header p { margin: 5px 0 0; font-size: 13px; opacity: 0.9; }
+
+        .container { max-width: 460px; width: 92%; flex: 1; }
+
+        .card { background: white; padding: 24px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 20px; }
+
+        h2 { margin-top: 0; font-size: 18px; color: #333; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+
+        label { display: block; margin-top: 14px; font-size: 13px; font-weight: bold; color: #555; }
+
+        select, input, button { width: 100%; padding: 11px; margin-top: 6px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 14px; background-color: #fff; }
+
+        button { background-color: #0d6efd; color: white; border: none; font-weight: bold; cursor: pointer; margin-top: 20px; transition: background 0.2s; }
+
+        button:hover { background-color: #0b5ed7; }
+
+        .hasil-box { margin-top: 18px; padding: 15px; border-radius: 6px; display: none; font-size: 14px; line-height: 1.6; }
+
+        .sesuai { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc; }
+
+        .tidak-sesuai { background-color: #f8d7da; color: #842029; border: 1px solid #f5c2c7; }
+
+        .netral { background-color: #fff3cd; color: #664d03; border: 1px solid #ffecb5; }
+
+        .footer { text-align: center; padding: 15px; font-size: 12px; color: #777; width: 100%; }
+</style>
+</head>
+<body>
+ 
+<div class="header">
+<h1>CekDong.com</h1>
+<p>Validasi Rekening Bank & E-Wallet Pelanggan</p>
+</div>
+ 
+<div class="container">
+<div class="card">
+<h2>🔍 Cek Rekening / E-Wallet</h2>
+<label>Pilih Bank atau E-Wallet</label>
+<select id="cekBank">
+<optgroup label="E-Wallet">
+<option value="EW_DANA">DANA</option>
+<option value="EW_OVO">OVO</option>
+<option value="EW_GOPAY">GoPay</option>
+<option value="EW_SHOPEEPAY">ShopeePay</option>
+<option value="EW_LINKAJA">LinkAja</option>
+<option value="EW_ISAKU">i.saku</option>
+<option value="EW_SAKUKU">Sakuku BCA</option>
+<option value="EW_DOKU">DOKU Wallet</option>
+<option value="EW_ASTRA">AstraPay</option>
+</optgroup>
+<optgroup label="Bank Utama & BUMN">
+<option value="014">BCA</option>
+<option value="008">Bank Mandiri</option>
+<option value="002">BRI</option>
+<option value="009">BNI</option>
+<option value="451">BSI (Bank Syariah Indonesia)</option>
+<option value="013">Bank Permata</option>
+<option value="022">CIMB Niaga</option>
+<option value="011">Bank Danamon</option>
+<option value="019">Panin Bank</option>
+<option value="028">Bank OCBC NISP</option>
+<option value="016">Maybank Indonesia</option>
+<option value="426">Bank Mega</option>
+<option value="153">Bank Sinarmas</option>
+<option value="213">Bank BTPN</option>
+<option value="023">Bank UOB Indonesia</option>
+<option value="046">Bank DBS Indonesia</option>
+</optgroup>
+<optgroup label="Bank Digital">
+<option value="542">Bank Jago</option>
+<option value="535">SeaBank</option>
+<option value="490">Bank Neo Commerce (BNC)</option>
+<option value="501">blu by BCA Digital</option>
+<option value="567">Allo Bank</option>
+<option value="484">LINE Bank (Hana Bank)</option>
+<option value="494">Bank Raya</option>
+<option value="513">Bank Ina Perdana</option>
+<option value="521">KB Bukopin</option>
+<option value="950">Bank Commonwealth</option>
+</optgroup>
+<optgroup label="Bank Pembangunan Daerah (BPD)">
+<option value="110">Bank BJB</option>
+<option value="111">Bank DKI</option>
+<option value="112">Bank BPD DIY</option>
+<option value="113">Bank Jateng</option>
+<option value="114">Bank Jatim</option>
+<option value="115">Bank Jambi</option>
+<option value="116">Bank Aceh Syariah</option>
+<option value="117">Bank Sumut</option>
+<option value="118">Bank Nagari</option>
+<option value="119">Bank Riau Kepri Syariah</option>
+<option value="120">Bank Sumsel Babel</option>
+<option value="121">Bank Lampung</option>
+<option value="122">Bank Kalsel</option>
+<option value="123">Bank Kalbar</option>
+<option value="124">Bank Kaltimtara</option>
+<option value="125">Bank Kalteng</option>
+<option value="126">Bank Sulselbar</option>
+<option value="127">Bank SulutGo</option>
+<option value="128">Bank NTB Syariah</option>
+<option value="129">Bank BPD Bali</option>
+<option value="130">Bank NTT</option>
+<option value="131">Bank Maluku Malut</option>
+<option value="132">Bank Papua</option>
+<option value="133">Bank Bengkulu</option>
+<option value="134">Bank Sulteng</option>
+<option value="135">Bank Sultra</option>
+<option value="137">Bank Banten</option>
+</optgroup>
+<optgroup label="Bank Swasta & Syariah Lainnya">
+<option value="147">Bank Muamalat</option>
+<option value="506">Bank Mega Syariah</option>
+<option value="547">Bank BTPN Syariah</option>
+<option value="425">Bank BJB Syariah</option>
+<option value="037">Bank Artha Graha</option>
+<option value="095">Bank JTrust Indonesia</option>
+<option value="146">Bank of India Indonesia</option>
+<option value="151">Bank Mestika Dharma</option>
+<option value="152">Bank Shinhan Indonesia</option>
+<option value="157">Bank Maspion</option>
+<option value="161">Bank Ganesha</option>
+<option value="164">Bank ICBC Indonesia</option>
+<option value="167">Bank QNB Indonesia</option>
+<option value="212">Bank Woori Saudara</option>
+<option value="485">Bank MNC Internasional</option>
+<option value="503">Bank Nationalnobu</option>
+<option value="526">Bank Oke Indonesia</option>
+<option value="553">Bank Mayora</option>
+<option value="555">Bank Index Selindo</option>
+<option value="564">Bank Mandiri Taspen</option>
+<option value="566">Bank Victoria</option>
+</optgroup>
+</select>
+ 
+        <label>Nomor Rekening / Nomor HP (E-Wallet)</label>
+<input type="text" id="cekNorek" placeholder="Ketik nomor lalu tekan Enter" autofocus>
+ 
+        <button type="button" onclick="cekData()">Cek Sekarang</button>
+<div id="hasilCek" class="hasil-box"></div>
+</div>
+</div>
+ 
+<div class="footer">
+&copy; 2026 CekDong.com &bull; Validasi Rekening & E-Wallet
+</div>
+ 
+<script>
+
+    // Mendeteksi tombol Enter di mana saja (kolom input maupun dropdown bank)
+
+    document.addEventListener('keydown', function(event) {
+
+        if (event.key === 'Enter') {
+
+            event.preventDefault();
+
+            cekData();
+
+        }
+
+    });
+ 
+    async function cekData() {
+
+        const bank = document.getElementById('cekBank').value;
+
+        const norek = document.getElementById('cekNorek').value;
+
+        const hasilDiv = document.getElementById('hasilCek');
+ 
+        if (!norek.trim()) return alert('Masukkan nomor rekening atau nomor HP terlebih dahulu!');
+ 
+        hasilDiv.style.display = 'block';
+
+        hasilDiv.className = 'hasil-box netral';
+
+        hasilDiv.innerHTML = 'Sedang mengecek data...';
+ 
+        try {
+
+            const res = await fetch('/api/cek', {
+
+                method: 'POST',
+
+                headers: { 'Content-Type': 'application/json' },
+
+                body: JSON.stringify({ bank, norek })
+
+            });
+
+            const result = await res.json();
+ 
+            if (!result.ditemukan) {
+
+                hasilDiv.className = 'hasil-box netral';
+
+                hasilDiv.innerHTML = `<strong>Hasil:</strong> ${result.pesan}`;
+
+            } else {
+
+                hasilDiv.className = result.sesuai ? 'hasil-box sesuai' : 'hasil-box tidak-sesuai';
+
+                hasilDiv.innerHTML = `
+<strong>Nama Pemilik Rekening:</strong> ${result.namaRekening}<br>
+<strong>Nama di Daftar Pelanggan:</strong> ${result.namaPelanggan}<br>
+<strong>Status Kecocokan:</strong> ${result.statusPesan}
+
+                `;
+
+            }
+
+        } catch (error) {
+
+            hasilDiv.className = 'hasil-box tidak-sesuai';
+
+            hasilDiv.innerHTML = '<strong>Gagal:</strong> Server belum berjalan atau belum terhubung.';
+
+        }
+
+    }
+</script>
+ 
+</body>
+</html>
+ 
